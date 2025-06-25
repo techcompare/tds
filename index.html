@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* ===== Global Styles ===== */
+        
         :root {
             --primary: #0A2463;
             --secondary: #FFD700;
@@ -60,7 +60,7 @@
             transform: translateY(-2px);
         }
 
-        /* ===== Header ===== */
+        
         header {
             background: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -81,7 +81,7 @@
             margin: 0 auto 30px;
         }
 
-        /* ===== Navigation ===== */
+        
         nav {
             background: var(--primary);
             padding: 15px 0;
@@ -120,7 +120,6 @@
             color: var(--secondary);
         }
 
-        /* ===== About Section ===== */
         #about {
             padding: 80px 0;
             background: white;
@@ -199,7 +198,7 @@
             margin-bottom: 10px;
         }
 
-        /* ===== Media Section ===== */
+       
         #media {
             padding: 80px 0;
             background: var(--light);
@@ -244,7 +243,7 @@
             color: var(--primary);
         }
 
-        /* ===== Updates Section ===== */
+       
         #updates {
             padding: 80px 0;
             background: white;
@@ -278,7 +277,7 @@
             margin-bottom: 10px;
         }
 
-        /* ===== Tributes Section ===== */
+        
         #tributes {
             padding: 80px 0;
             background: var(--light);
@@ -349,7 +348,7 @@
             margin-bottom: 10px;
         }
 
-        /* ===== Responsive Design ===== */
+        
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.5rem;
@@ -366,7 +365,7 @@
     </style>
 </head>
 <body>
-    <!-- ===== Navigation ===== -->
+ 
     <nav>
         <div class="container">
             <div class="logo">Palki Sharma</div>
@@ -379,7 +378,7 @@
         </div>
     </nav>
 
-    <!-- ===== Hero Header ===== -->
+
     <header>
         <div class="container">
             <h1>Celebrating Fearless Journalism</h1>
@@ -388,7 +387,7 @@
         </div>
     </header>
 
-    <!-- ===== About Section ===== -->
+   
     <section id="about">
         <div class="container">
             <h2>About Palki Sharma</h2>
@@ -514,7 +513,7 @@
         </div>
     </section>
 
-    <!-- ===== Footer ===== -->
+    
     <footer>
         <div class="container">
             <div class="social-links">
@@ -527,16 +526,16 @@
         </div>
     </footer>
 
-    <!-- ===== JavaScript ===== -->
+
     <script>
-        // Form Submission
+   
         document.getElementById('tributeForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you for your tribute! It has been submitted.');
             this.reset();
         });
 
-        // Smooth Scrolling
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
