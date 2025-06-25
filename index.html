@@ -1,160 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FreshBake Delights | Artisanal Bakery</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #fff8f0; scroll-behavior: smooth; }
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-    header { background: #fff; padding: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-    .logo { font-size: 28px; font-weight: bold; color: #e67e22; }
-    .logo span { color: #d35400; }
-    nav { display: flex; justify-content: space-between; align-items: center; }
-    .nav-links a { margin-left: 20px; text-decoration: none; color: #333; font-weight: 500; transition: all 0.3s; }
-    .nav-links a:hover { color: #e67e22; }
-    .hero { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat; color: #fff; padding: 100px 20px; text-align: center; }
-    .hero h1 { font-size: 48px; margin-bottom: 20px; }
-    .hero p { font-size: 20px; max-width: 600px; margin: 0 auto 30px; }
-    .btn { background: #e67e22; color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-block; }
-    .btn:hover { background: #d35400; transform: translateY(-3px); }
-    .product-categories { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 60px 0; }
-    .category-card { position: relative; height: 200px; border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.3s; }
-    .category-card:hover { transform: translateY(-10px); }
-    .category-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-    .category-card:hover img { transform: scale(1.05); }
-    .category-overlay { position: absolute; bottom: 0; width: 100%; padding: 20px; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,0.7)); }
-    .cta { background: #e67e22; color: #fff; padding: 60px 20px; text-align: center; }
-    .cta h2 { font-size: 36px; margin-bottom: 20px; }
-    footer { background: #333; color: #fff; padding: 40px 20px; text-align: center; }
-    .social-links { margin: 20px 0; }
-    .social-links a { color: white; margin: 0 10px; font-size: 20px; transition: all 0.3s; }
-    .social-links a:hover { color: #f8c291; transform: translateY(-3px); }
-    .quick-teleport { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); padding: 15px 10px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; z-index: 90; }
-    .quick-teleport a { margin: 8px 0; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #f8c291; color: white; text-decoration: none; transition: all 0.3s; }
-    .quick-teleport a:hover { background: #e67e22; transform: scale(1.1); }
-    .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: #e67e22; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 99; }
-    .back-to-top.show { opacity: 1; visibility: visible; }
-    .back-to-top:hover { background: #d35400; transform: translateY(-5px); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribute to Palki Sharma | Fearless Journalism</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Global Styles ===== */
+        :root {
+            --primary: #0A2463;
+            --secondary: #FFD700;
+            --accent: #D7263D;
+            --light: #F8F9FA;
+            --dark: #212529;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ===== Header ===== */
+        header {
+            background: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* ===== Navigation ===== */
+        nav {
+            background: var(--primary);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* ===== About Section ===== */
+        #about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        #about h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .timeline {
+            margin-top: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 25px;
+            width: 1px;
+            height: calc(100% - 20px);
+            background: var(--primary);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .timeline-item h4 {
+            margin-bottom: 10px;
+        }
+
+        /* ===== Media Section ===== */
+        #media {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        #media h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .media-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .media-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .media-card iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
+        .media-card-content {
+            padding: 20px;
+        }
+
+        .media-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* ===== Updates Section ===== */
+        #updates {
+            padding: 80px 0;
+            background: white;
+        }
+
+        #updates h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .updates-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .update-item {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .update-item h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .update-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* ===== Tributes Section ===== */
+        #tributes {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        #tributes h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .tribute-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-  
-  
-  <div class="quick-teleport">
-    <a href="#home" title="Home"><i class="fas fa-home"></i></a>
-    <a href="products.html" title="Products"><i class="fas fa-bread-slice"></i></a>
-    <a href="order.html" title="Order"><i class="fas fa-shopping-cart"></i></a>
-    <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
-  </div>
- 
-  <a href="#home" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
-
-  <header>
-    <div class="container">
-      <nav>
-        <a href="index.html" class="logo">Fresh<span>Bake</span> Delights</a>
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="products.html">Products</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="order.html" class="btn">Order Now</a>
+    <!-- ===== Navigation ===== -->
+    <nav>
+        <div class="container">
+            <div class="logo">Palki Sharma</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#media">Featured Work</a></li>
+                <li><a href="#updates">Career</a></li>
+                <li><a href="#tributes">Tributes</a></li>
+            </ul>
         </div>
-      </nav>
-    </div>
-  </header>
+    </nav>
 
-  <section class="hero" id="home">
-    <div class="container">
-      <h1>Artisanal Bakery Delivered to Your Doorstep</h1>
-      <p>Enjoy freshly baked goods made with love and premium ingredients — no middlemen.</p>
-      <a href="order.html" class="btn">Order Now</a>
-    </div>
-  </section>
-
-  <section class="products" id="products">
-    <div class="container">
-      <h2 style="text-align:center; color:#d35400; margin-top:40px;">Explore Our Creations</h2>
-      <div class="product-categories">
-        <div class="category-card" onclick="window.location.href='products.html'">
-          <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=500&q=80" alt="Cookies">
-          <div class="category-overlay">
-            <h3>Cookies & Biscuits</h3>
-          </div>
+    <!-- ===== Hero Header ===== -->
+    <header>
+        <div class="container">
+            <h1>Celebrating Fearless Journalism</h1>
+            <p>A tribute to Palki Sharma, a voice of reason in global news, known for her incisive analysis and unwavering integrity.</p>
+            <a href="#media" class="btn">Watch Her Work</a>
         </div>
+    </header>
 
-        <div class="category-card" onclick="window.location.href='products.html'">
-          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80" alt="Cakes">
-          <div class="category-overlay">
-            <h3>Cakes & Pastries</h3>
-          </div>
+    <!-- ===== About Section ===== -->
+    <section id="about">
+        <div class="container">
+            <h2>About Palki Sharma</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Palki Sharma">
+                </div>
+                <div class="about-text">
+                    <h3>Journalist | News Anchor | Managing Editor</h3>
+                    <p>Born on May 29, 1982, in India, Palki Sharma holds a Master’s in Communication and Journalism from IHC (IIS), Delhi University, and a degree in design. She began her career at Doordarshan in 2002 and rose to prominence through CNN-IBN, WION, and now Firstpost.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Early Career (2002-2005)</h4>
+                            <p>News anchor at Doordarshan, covering daily bulletins and interviews.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>CNN-IBN (2005-2015)</h4>
+                            <p>Prime-time anchor and journalist, covering politics and business.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>WION (2016-2022)</h4>
+                            <p>Managing Editor and host of "Gravitas," gaining global recognition.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Firstpost (2023-Present)</h4>
+                            <p>Host of "Vantage with Palki Sharma," continuing her sharp global analysis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="category-card" onclick="window.location.href='products.html'">
-          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80" alt="Breads">
-          <div class="category-overlay">
-            <h3>Breads & Buns</h3>
-          </div>
+    <!-- ===== Media Section ===== -->
+    <section id="media">
+        <div class="container">
+            <h2>Featured Work</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <iframe src="https://www.youtube.com/embed/cOZZCWM9QTY" frameborder="0" allowfullscreen></iframe>
+                    <div class="media-card-content">
+                        <h3>Gravitas: India's Global Voice</h3>
+                        <p>Analysis of India's foreign policy under Modi.</p>
+                        <a href="https://youtu.be/cOZZCWM9QTY?si=MPo8LELJ--_2P1Le" class="btn" target="_blank">Watch Now</a>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <iframe src="https://www.youtube.com/embed/cIGL52QomiM" frameborder="0" allowfullscreen></iframe>
+                    <div class="media-card-content">
+                        <h3>Interview with PM Modi</h3>
+                        <p>Conversation on India's economic growth.</p>
+                        <a href="https://youtu.be/cIGL52QomiM" class="btn" target="_blank">Watch Now</a>
+                    </div>
+                </div>
+                <div class="media-card">
+                    <iframe src="https://www.youtube.com/embed/fcsmSRMJsRc" frameborder="0" allowfullscreen></iframe>
+                    <div class="media-card-content">
+                        <h3>Vantage: Global Headlines</h3>
+                        <p>Breaking down complex international issues.</p>
+                        <a href="https://youtu.be/fcsmSRMJsRc" class="btn" target="_blank">Watch Now</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="category-card" onclick="window.location.href='products.html'">
-          <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=500&q=80" alt="Sweets">
-          <div class="category-overlay">
-            <h3>Desserts & Sweets</h3>
-          </div>
+    </section>
+
+    <!-- ===== Updates Section (Career Timeline) ===== -->
+    <section id="updates">
+        <div class="container">
+            <h2>Career Milestones</h2>
+            <div class="updates-container">
+                <div class="update-item">
+                    <h3>Early Life & Education</h3>
+                    <div class="update-date">Born May 29, 1982</div>
+                    <p>Master’s in Communication and Journalism from Delhi University. Degree in ceramics and interior design.</p>
+                </div>
+                <div class="update-item">
+                    <h3>Doordarshan (2002)</h3>
+                    <div class="update-date">2002-2005</div>
+                    <p>Began as a news anchor, handling daily bulletins and interviews.</p>
+                </div>
+                <div class="update-item">
+                    <h3>CNN-IBN (2005)</h3>
+                    <div class="update-date">2005-2015</div>
+                    <p>Prime-time anchor covering politics, business, and social issues.</p>
+                </div>
+                <div class="update-item">
+                    <h3>WION (2016-2022)</h3>
+                    <div class="update-date">2016-2022</div>
+                    <p>Managing Editor and host of "Gravitas," reaching a global audience.</p>
+                </div>
+                <div class="update-item">
+                    <h3>Firstpost (2023-Present)</h3>
+                    <div class="update-date">2023</div>
+                    <p>Launched "Vantage with Palki Sharma," continuing her legacy of incisive journalism.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta">
-    <div class="container">
-      <h2>Want Something Custom?</h2>
-      <p>We create bespoke cakes and treats for any celebration. Reach out today!</p>
-      <a href="order.html" class="btn" style="background: white; color: #e67e22;">Place Custom Order</a>
-    </div>
-  </section>
+    <!-- ===== Tributes Section ===== -->
+    <section id="tributes">
+        <div class="container">
+            <h2>Share Your Tribute</h2>
+            <div class="tribute-form">
+                <form id="tributeForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Tribute</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit Tribute</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-  <footer id="contact">
-    <div class="container">
-      <div class="logo" style="color: white; margin-bottom: 20px;">Fresh<span style="color: #f8c291;">Bake</span> Delights</div>
-      
-      <div class="social-links">
-        <a href="https://wa.me/0029VaBUc9HDp2QIE8kPAK3P" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.instagram.com/anchor_palkisharma/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@palkisharmaFanPage/shorts" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://x.com/PalkiSharmaFP" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-      </div>
-      
-      <p style="margin-top: 20px;">
-        <i class="fas fa-map-marker-alt"></i> Mumbai, India<br>
-        <a href="mailto:workwithme785@gmail.com" style="color: #f8c291; text-decoration: none;">
-          <i class="fas fa-envelope"></i> workwithme785@gmail.com
-        </a>
-      </p>
-      
-      <p style="margin-top: 20px;">&copy; 2025 FreshBake Delights. Crafted with ❤️ in Mumbai.</p>
-    </div>
-  </footer>
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>© 2023 Palki Sharma Tribute. All rights reserved.</p>
+            <p><em>This is an unofficial fan page. Not affiliated with Palki Sharma or Firstpost.</em></p>
+        </div>
+    </footer>
 
-  <script>
-    const backToTopButton = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('show');
-      } else {
-        backToTopButton.classList.remove('show');
-      }
-    });
-    
-    
-    document.querySelectorAll('.category-card').forEach(card => {
-      card.style.cursor = 'pointer';
-    });
-  </script>
+    <!-- ===== JavaScript ===== -->
+    <script>
+        // Form Submission
+        document.getElementById('tributeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your tribute! It has been submitted.');
+            this.reset();
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 </body>
