@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tribute to Palki Sharma | Fearless Journalism</title>
+    <title>Palki Sharma | Tribute to Fearless Journalism</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        
         :root {
-            --primary: #0A2463;
-            --secondary: #FFD700;
-            --accent: #D7263D;
-            --light: #F8F9FA;
-            --dark: #212529;
+            --primary: #1a237e;
+            --primary-light: #534bae;
+            --secondary: #ffab00;
+            --accent: #d32f2f;
+            --light: #f5f5f5;
+            --dark: #212121;
+            --text: #424242;
+            --success: #4caf50;
         }
 
         * {
@@ -23,20 +25,16 @@
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
             background-color: var(--light);
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary);
+            color: var(--dark);
         }
 
         .container {
@@ -46,60 +44,52 @@
             padding: 0 20px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--primary);
-            color: white;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        
+        /* Header Styles */
         header {
-            background: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
-            padding: 100px 0;
+            padding: 80px 0 120px;
             text-align: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
-        header h1 {
-            font-size: 3rem;
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
 
-        header p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
+        .profile-img:hover {
+            transform: scale(1.05);
         }
 
-        
+        /* Navigation */
         nav {
-            background: var(--primary);
-            padding: 15px 0;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        nav .container {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: white;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
         }
 
         .nav-links {
@@ -112,25 +102,56 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--dark);
             font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--secondary);
+        .nav-links a.active {
+            color: var(--accent);
         }
 
-        #about {
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        /* Section Styles */
+        section {
             padding: 80px 0;
-            background: white;
         }
 
-        #about h2 {
+        .section-title {
             text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary);
+            margin-bottom: 60px;
+            position: relative;
         }
 
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        /* About Section */
         .about-content {
             display: flex;
             flex-wrap: wrap;
@@ -138,194 +159,222 @@
             align-items: center;
         }
 
-        .about-img {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-img img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
         .about-text {
             flex: 1;
             min-width: 300px;
         }
 
-        .about-text h3 {
+        .about-text p {
             margin-bottom: 20px;
-            color: var(--primary);
         }
 
-        .timeline {
-            margin-top: 30px;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 30px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            background: var(--secondary);
-            border-radius: 50%;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 25px;
-            width: 1px;
-            height: calc(100% - 20px);
-            background: var(--primary);
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        .timeline-item h4 {
-            margin-bottom: 10px;
-        }
-
-       
-        #media {
-            padding: 80px 0;
-            background: var(--light);
-        }
-
-        #media h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary);
-        }
-
-        .media-grid {
+        /* Featured Work */
+        .work-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
 
-        .media-card {
+        .work-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .media-card:hover {
+        .work-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
 
-        .media-card iframe {
+        .work-card iframe {
             width: 100%;
             height: 200px;
             border: none;
         }
 
-        .media-card-content {
+        .work-content {
             padding: 20px;
         }
 
-        .media-card h3 {
+        .work-content h3 {
             margin-bottom: 10px;
             color: var(--primary);
         }
 
-       
-        #updates {
-            padding: 80px 0;
-            background: white;
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            pointer-events: none;
         }
 
-        #updates h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary);
+        .work-card:hover .play-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
-        .updates-container {
+        /* Career Timeline */
+        .timeline {
+            position: relative;
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .update-item {
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
             margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
         }
 
-        .update-item h3 {
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 40px);
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            left: calc(50% + 40px);
+        }
+
+        .timeline-content:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--secondary);
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content:before {
+            right: -50px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:before {
+            left: -50px;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
             margin-bottom: 10px;
-            color: var(--primary);
         }
 
-        .update-date {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        
-        #tributes {
-            padding: 80px 0;
-            background: var(--light);
-        }
-
-        #tributes h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary);
-        }
-
+        /* Tribute Form */
         .tribute-form {
             max-width: 600px;
             margin: 0 auto;
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-control {
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Open Sans', sans-serif;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
         }
 
-        .form-group textarea {
-            height: 150px;
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+            outline: none;
         }
 
-        /* ===== Footer ===== */
-        footer {
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
             background: var(--primary);
             color: white;
-            padding: 30px 0;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(211, 47, 47, 0.2);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
             text-align: center;
         }
 
@@ -336,118 +385,133 @@
         .social-links a {
             color: white;
             font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s ease;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .social-links a:hover {
             color: var(--secondary);
+            transform: translateY(-3px);
         }
 
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
+            .nav-container {
+                flex-direction: column;
             }
 
             .nav-links {
-                display: none;
+                margin-top: 20px;
             }
 
-            .about-content {
-                flex-direction: column;
+            .nav-links li {
+                margin: 0 10px;
+            }
+
+            .timeline:before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                left: 0;
+            }
+
+            .timeline-content:before {
+                left: -50px !important;
+            }
+
+            header {
+                padding: 60px 0 100px;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tribute-form {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
- 
-    <nav>
+    <!-- Header Section -->
+    <header>
         <div class="container">
+            <img src="https://pbs.twimg.com/profile_images/1620849803738624000/oZwSBu1m_400x400.jpg" alt="Palki Sharma" class="profile-img">
+            <h1>Palki Sharma Upadhyay</h1>
+            <p>Celebrating a voice of reason in global journalism</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
             <div class="logo">Palki Sharma</div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#media">Featured Work</a></li>
-                <li><a href="#updates">Career</a></li>
-                <li><a href="#tributes">Tributes</a></li>
+                <li><a href="#about" class="active">About</a></li>
+                <li><a href="#work">Featured Work</a></li>
+                <li><a href="#career">Career</a></li>
+                <li><a href="#tribute">Tribute</a></li>
             </ul>
         </div>
     </nav>
 
-
-    <header>
-        <div class="container">
-            <h1>Celebrating Fearless Journalism</h1>
-            <p>A tribute to Palki Sharma, a voice of reason in global news, known for her incisive analysis and unwavering integrity.</p>
-            <a href="#media" class="btn">Watch Her Work</a>
-        </div>
-    </header>
-
-   
+    <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2>About Palki Sharma</h2>
+            <h2 class="section-title">About Palki</h2>
             <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Palki Sharma">
-                </div>
                 <div class="about-text">
-                    <h3>Journalist | News Anchor | Managing Editor</h3>
-                    <p>Born on May 29, 1982, in India, Palki Sharma holds a Master’s in Communication and Journalism from IHC (IIS), Delhi University, and a degree in design. She began her career at Doordarshan in 2002 and rose to prominence through CNN-IBN, WION, and now Firstpost.</p>
-                    
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <h4>Early Career (2002-2005)</h4>
-                            <p>News anchor at Doordarshan, covering daily bulletins and interviews.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4>CNN-IBN (2005-2015)</h4>
-                            <p>Prime-time anchor and journalist, covering politics and business.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4>WION (2016-2022)</h4>
-                            <p>Managing Editor and host of "Gravitas," gaining global recognition.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4>Firstpost (2023-Present)</h4>
-                            <p>Host of "Vantage with Palki Sharma," continuing her sharp global analysis.</p>
-                        </div>
-                    </div>
+                    <p>Palki Sharma Upadhyay is an award-winning Indian journalist and news anchor currently serving as the Editor-in-Chief of Firstpost. Known for her sharp analysis and incisive questioning, she has become one of India's most recognizable faces in global news coverage.</p>
+                    <p>Born on May 29, 1982, Palki holds a Master's degree in Communication and Journalism from the Indian Institute of Mass Communication (IIMC), Delhi. She also has a degree in design, specializing in ceramics and interior design.</p>
+                    <p>Her career spans over two decades across major news networks including Doordarshan, CNN-IBN, WION, and now Firstpost. She is particularly known for her ability to explain complex international issues in simple terms.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== Media Section ===== -->
-    <section id="media">
+    <!-- Featured Work Section -->
+    <section id="work" style="background-color: #f9f9f9;">
         <div class="container">
-            <h2>Featured Work</h2>
-            <div class="media-grid">
-                <div class="media-card">
-                    <iframe src="https://www.youtube.com/embed/cOZZCWM9QTY" frameborder="0" allowfullscreen></iframe>
-                    <div class="media-card-content">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="work-grid">
+                <div class="work-card">
+                    <iframe src="https://www.youtube.com/embed/cOZZCWM9QTY" allowfullscreen></iframe>
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                    <div class="work-content">
                         <h3>Gravitas: India's Global Voice</h3>
-                        <p>Analysis of India's foreign policy under Modi.</p>
-                        <a href="https://youtu.be/cOZZCWM9QTY?si=MPo8LELJ--_2P1Le" class="btn" target="_blank">Watch Now</a>
+                        <p>Analysis of India's foreign policy under Modi government</p>
+                        <a href="https://youtu.be/cOZZCWM9QTY" class="btn" target="_blank">Watch Now</a>
                     </div>
                 </div>
-                <div class="media-card">
-                    <iframe src="https://www.youtube.com/embed/cIGL52QomiM" frameborder="0" allowfullscreen></iframe>
-                    <div class="media-card-content">
+                <div class="work-card">
+                    <iframe src="https://www.youtube.com/embed/cIGL52QomiM" allowfullscreen></iframe>
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                    <div class="work-content">
                         <h3>Interview with PM Modi</h3>
-                        <p>Conversation on India's economic growth.</p>
+                        <p>Exclusive conversation about India's economic growth</p>
                         <a href="https://youtu.be/cIGL52QomiM" class="btn" target="_blank">Watch Now</a>
                     </div>
                 </div>
-                <div class="media-card">
-                    <iframe src="https://www.youtube.com/embed/fcsmSRMJsRc" frameborder="0" allowfullscreen></iframe>
-                    <div class="media-card-content">
+                <div class="work-card">
+                    <iframe src="https://www.youtube.com/embed/fcsmSRMJsRc" allowfullscreen></iframe>
+                    <div class="play-icon"><i class="fas fa-play"></i></div>
+                    <div class="work-content">
                         <h3>Vantage: Global Headlines</h3>
-                        <p>Breaking down complex international issues.</p>
+                        <p>Breaking down complex international issues</p>
                         <a href="https://youtu.be/fcsmSRMJsRc" class="btn" target="_blank">Watch Now</a>
                     </div>
                 </div>
@@ -455,97 +519,193 @@
         </div>
     </section>
 
-    <!-- ===== Updates Section (Career Timeline) ===== -->
-    <section id="updates">
+    <!-- Career Timeline Section -->
+    <section id="career">
         <div class="container">
-            <h2>Career Milestones</h2>
-            <div class="updates-container">
-                <div class="update-item">
-                    <h3>Early Life & Education</h3>
-                    <div class="update-date">Born May 29, 1982</div>
-                    <p>Master’s in Communication and Journalism from Delhi University. Degree in ceramics and interior design.</p>
+            <h2 class="section-title">Career Milestones</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2002-2005</div>
+                        <h3>Doordarshan</h3>
+                        <p>Began career as a news anchor on India's national broadcaster, handling daily news bulletins and interviews.</p>
+                    </div>
                 </div>
-                <div class="update-item">
-                    <h3>Doordarshan (2002)</h3>
-                    <div class="update-date">2002-2005</div>
-                    <p>Began as a news anchor, handling daily bulletins and interviews.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2005-2015</div>
+                        <h3>CNN-IBN</h3>
+                        <p>Worked as prime-time anchor and journalist, covering politics, business and social issues.</p>
+                    </div>
                 </div>
-                <div class="update-item">
-                    <h3>CNN-IBN (2005)</h3>
-                    <div class="update-date">2005-2015</div>
-                    <p>Prime-time anchor covering politics, business, and social issues.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2016-2022</div>
+                        <h3>WION</h3>
+                        <p>Served as Managing Editor and host of "Gravitas", gaining international recognition for her global news coverage.</p>
+                    </div>
                 </div>
-                <div class="update-item">
-                    <h3>WION (2016-2022)</h3>
-                    <div class="update-date">2016-2022</div>
-                    <p>Managing Editor and host of "Gravitas," reaching a global audience.</p>
-                </div>
-                <div class="update-item">
-                    <h3>Firstpost (2023-Present)</h3>
-                    <div class="update-date">2023</div>
-                    <p>Launched "Vantage with Palki Sharma," continuing her legacy of incisive journalism.</p>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023-Present</div>
+                        <h3>Firstpost</h3>
+                        <p>Editor-in-Chief and host of "Vantage with Palki Sharma", continuing her incisive analysis of global affairs.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== Tributes Section ===== -->
-    <section id="tributes">
+    <!-- Tribute Section -->
+    <section id="tribute" style="background-color: #f9f9f9;">
         <div class="container">
-            <h2>Share Your Tribute</h2>
+            <h2 class="section-title">Share Your Tribute</h2>
             <div class="tribute-form">
-                <form id="tributeForm">
+                <form id="tributeForm" action="https://formspree.io/f/mwpbwlbq" method="POST">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Your Tribute</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Your Tribute Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
                     </div>
-                    <button type="submit" class="btn">Submit Tribute</button>
+                    <button type="submit" class="submit-btn">Submit Tribute</button>
+                    <div id="formMessage" class="form-message"></div>
                 </form>
             </div>
         </div>
     </section>
 
-    
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="https://twitter.com/palkisu" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/palkisharmaupadhyay/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/c/WION" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/palki-sharma-upadhyay-1a2b3c4d/" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
-            <p>© 2023 Palki Sharma Tribute. All rights reserved.</p>
+            <p>© <span id="year"></span> Palki Sharma Tribute. All rights reserved.</p>
             <p><em>This is an unofficial fan page. Not affiliated with Palki Sharma or Firstpost.</em></p>
         </div>
     </footer>
 
-
     <script>
-   
-        document.getElementById('tributeForm').addEventListener('submit', function(e) {
+        // Current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Form Submission
+        const form = document.getElementById('tributeForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Thank you for your tribute! It has been submitted.');
-            this.reset();
+            
+            // Disable submit button
+            const submitBtn = form.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    // Success message
+                    formMessage.textContent = 'Thank you for your tribute! Your message has been submitted successfully.';
+                    formMessage.className = 'form-message success';
+                    form.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Error message
+                formMessage.textContent = 'There was an error submitting your tribute. Please try again later.';
+                formMessage.className = 'form-message error';
+                console.error('Submission error:', error);
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Tribute';
+                
+                // Scroll to message
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.className = 'form-message';
+                    formMessage.textContent = '';
+                }, 5000);
+            }
         });
 
-        
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without page reload
+                    history.pushState(null, null, targetId);
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Add active class to current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            let scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    const currentId = '#' + section.getAttribute('id');
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === currentId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Play icon animation for video cards
+        document.querySelectorAll('.work-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('.play-icon').style.transform = 'translate(-50%, -50%) scale(1.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('.play-icon').style.transform = 'translate(-50%, -50%)';
             });
         });
     </script>
-</body>
-</html>
 </body>
 </html>
