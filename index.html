@@ -1,99 +1,171 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TDS Innovation</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forever Moments</title>
+  <link rel="icon" href="https://emoji.gg/assets/emoji/7336-pink-heart.png" type="image/png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fdf6f0;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: #ffc5d9;
+      padding: 20px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #fff0f5;
+      padding: 10px;
+      gap: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    nav a {
+      text-decoration: none;
+      color: #ff5d8f;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #d10062;
+    }
+    section {
+      padding: 60px 20px;
+      min-height: 100vh;
+    }
+    .home, .birthday, .school, .college, .gallery, .contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1rem;
+      max-width: 700px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+      width: 90%;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    form {
+      margin-top: 20px;
+      max-width: 400px;
+      width: 100%;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background: #ff5d8f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ffc5d9;
+      font-size: 14px;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      section {
+        padding: 40px 15px;
+      }
+    }
+  </style>
 </head>
+<body>
 
-<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
-  <!-- Dark Mode Toggle -->
-  <div class="fixed top-4 right-4 z-50">
-    <button id="toggleDark" class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full shadow hover:scale-110 transition">
-      🌙
-    </button>
-  </div>
+  <header>Forever Moments 💖</header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#birthday">Birthday</a>
+    <a href="#school">School</a>
+    <a href="#college">College</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-  <!-- Google Sign-In Button -->
-  <div class="fixed bottom-4 left-4 z-50">
-    <button id="googleBtn" class="bg-red-600 text-white px-4 py-2 rounded-full shadow hover:bg-red-700 transition">
-      🔐 Sign in with Google
-    </button>
-  </div>
-
-  <!-- Floating Buy Bundle -->
-  <div class="fixed bottom-4 right-4 z-50">
-    <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
-      Buy Bundle
-    </button>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center p-8">
-    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_tfb3estd.json" background="transparent" speed="1" loop autoplay style="height: 300px;"></lottie-player>
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">Innovative Tools for the Modern Creator</h1>
-    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-xl">Explore resources designed to power your productivity, content, and business.</p>
+  <section class="home" id="home">
+    <h1>Welcome to Our Memories</h1>
+    <p>This space is for cherishing our timeless moments — birthdays, laughter, school madness, and college adventures 🥰</p>
   </section>
 
-  <!-- Footer -->
-  <footer class="p-6 bg-gray-200 dark:bg-gray-700 text-center">
-    <div class="mb-2">
-      <a href="#" class="mx-2 hover:underline">Home</a>
-      <a href="#" class="mx-2 hover:underline">Products</a>
-      <a href="#" class="mx-2 hover:underline">Contact</a>
+  <section class="birthday" id="birthday">
+    <h1>🎂 Birthday Memories</h1>
+    <p>From surprise cakes to emotional hugs, each birthday told its own story. Swipe through the smiles!</p>
+  </section>
+
+  <section class="school" id="school">
+    <h1>🏫 School Days</h1>
+    <p>The blackboards, benches, teachers, and pranks – those were the golden days of childhood!</p>
+  </section>
+
+  <section class="college" id="college">
+    <h1>🎓 College Diaries</h1>
+    <p>Assignments, chai breaks, campus walks, and midnight group studies – a whole vibe!</p>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <h1>📸 Our Gallery</h1>
+    <div class="gallery-grid">
+      <img src="https://source.unsplash.com/300x200/?friends" alt="Memory 1">
+      <img src="https://source.unsplash.com/300x200/?birthday" alt="Memory 2">
+      <img src="https://source.unsplash.com/300x200/?school" alt="Memory 3">
+      <img src="https://source.unsplash.com/300x200/?college" alt="Memory 4">
     </div>
-    <p class="text-sm">&copy; <span id="year"></span> TDS Innovation. All rights reserved.</p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h1>💌 Stay in Touch</h1>
+    <p>Drop me a message or let’s catch up soon! 💬</p>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    Made with ❤️ for our forever friends.
   </footer>
 
-  <script>
-    // Update year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Dark mode toggle
-    document.getElementById('toggleDark').addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-    });
-
-    // Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyBTdQHJ6_MfTxWVJ1TK7K7kYBvIOxWpjIw",
-      authDomain: "uv-community.firebaseapp.com",
-      projectId: "uv-community",
-      appId: "1:YOUR_APP_ID:web:YOUR_WEB_KEY"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    const useRedirect = location.protocol !== 'https:' && location.hostname !== 'localhost';
-
-    document.getElementById('googleBtn').addEventListener('click', async () => {
-      try {
-        if (useRedirect) {
-          auth.signInWithRedirect(provider);
-        } else {
-          const result = await auth.signInWithPopup(provider);
-          alert(`✅ Welcome ${result.user.displayName}`);
-        }
-      } catch (err) {
-        alert(`❌ ${err.message}`);
-      }
-    });
-
-    auth.getRedirectResult()
-      .then(result => {
-        if (result.user) {
-          alert(`✅ Welcome back ${result.user.displayName}`);
-        }
-      })
-      .catch(err => console.error(err));
-  </script>
 </body>
-
 </html>
