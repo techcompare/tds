@@ -1,1 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS Innovation - Startup Idea Generator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        
+        .idea-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .idea-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        
+        .idea-description {
+            color: #475569;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .idea-card {
+                padding: 20px;
+                min-height: 150px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">TDS INNOVATION</h1>
+        <p class="tagline">Unleashing Tomorrow's Ideas Today</p>
+        
+        <div class="idea-card" id="ideaCard">
+            <div class="idea-title" id="ideaTitle">Ready to Innovate?</div>
+            <div class="idea-description" id="ideaDescription">Click the button below to generate your next million-dollar startup idea. Each click reveals a unique concept combining cutting-edge technology with real-world problems.</div>
+        </div>
+        
+        <button class="generate-btn" onclick="generateIdea()">
+            🚀 Generate New Idea
+        </button>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="ideasGenerated">0</div>
+                <div class="stat-label">Ideas Generated</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="categoriesExplored">0</div>
+                <div class="stat-label">Categories Explored</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Possibilities</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let ideasGenerated = 0;
+        let categoriesExplored = new Set();
+        
+        const startupIdeas = [
+            {
+                title: "AI-Powered Plant Whisperer",
+                description: "A smart device that uses computer vision and AI to monitor plant health, automatically adjusting water, light, and nutrients. Perfect for urban gardeners and busy plant parents who want thriving greenery without the guesswork.",
+                category: "AgTech"
+            },
+            {
+                title: "Virtual Reality Therapy Pods",
+                description: "Immersive VR experiences designed for mental health treatment. Patients can practice social situations, confront phobias, or meditate in calming virtual environments, all guided by AI therapists.",
+                category: "HealthTech"
+            },
+            {
+                title: "Blockchain-Based Skill Verification",
+                description: "A decentralized platform where professionals can earn verified digital badges for skills and achievements. Employers can trust the authenticity of qualifications without lengthy verification processes.",
+                category: "EdTech"
+            },
+            {
+                title: "Smart Waste Sorting Robots",
+                description: "AI-powered robots that automatically sort household waste into recycling, compost, and trash categories. Reduces contamination and increases recycling efficiency while educating users about waste management.",
+                category: "CleanTech"
+            },
+            {
+                title: "Personalized Nutrition DNA Kits",
+                description: "At-home genetic testing that provides personalized meal plans, supplement recommendations, and cooking recipes based on your unique genetic makeup and health goals.",
+                category: "BioTech"
+            },
+            {
+                title: "AR Shopping Assistant Glasses",
+                description: "Augmented reality glasses that overlay product information, reviews, and price comparisons while shopping in physical stores. Never wonder about product details or miss a better deal again.",
+                category: "RetailTech"
+            },
+            {
+                title: "Micro-Mobility Subscription Service",
+                description: "A unified app that provides access to e-scooters, bikes, skateboards, and other micro-mobility devices across cities. One subscription, multiple transportation options, seamless urban mobility.",
+                category: "MobilityTech"
+            },
+            {
+                title: "AI-Generated Personalized Podcasts",
+                description: "An AI system that creates custom podcast episodes based on your interests, learning goals, and available time. Perfect for commuters who want educational content tailored to their specific needs.",
+                category: "MediaTech"
+            },
+            {
+                title: "Smart Home Energy Trading",
+                description: "A platform that allows homeowners with solar panels to automatically trade excess energy with neighbors. Blockchain-based transactions ensure fair pricing and grid stability.",
+                category: "EnergyTech"
+            },
+            {
+                title: "Virtual Interior Design Studio",
+                description: "AI-powered interior design service that uses room photos to generate multiple design options. Customers can visualize changes in AR before purchasing furniture and decor items.",
+                category: "PropTech"
+            },
+            {
+                title: "Emotion-Responsive Music Platform",
+                description: "A music streaming service that uses facial recognition and biometric data to detect your mood and automatically curate playlists that enhance or balance your emotional state.",
+                category: "MusicTech"
+            },
+            {
+                title: "Drone-Delivered Emergency Supplies",
+                description: "A network of autonomous drones that deliver emergency medical supplies, food, and water to disaster-affected areas within minutes. GPS-guided and weather-resistant for critical situations.",
+                category: "LogisticsTech"
+            },
+            {
+                title: "AI Language Learning Companion",
+                description: "A conversational AI that adapts to your learning style and provides immersive language practice through realistic scenarios. Practice ordering food in Paris or negotiating business deals in Tokyo.",
+                category: "EdTech"
+            },
+            {
+                title: "Smart Clothing Fitness Tracker",
+                description: "Workout clothes embedded with sensors that track form, muscle activation, and performance metrics. Provides real-time coaching through connected earbuds to prevent injuries and optimize workouts.",
+                category: "FitnessTech"
+            },
+            {
+                title: "Vertical Farm Automation System",
+                description: "Complete automation solution for vertical farms using IoT sensors, robotic harvesters, and AI optimization. Maximizes crop yield while minimizing water usage and labor costs.",
+                category: "AgTech"
+            },
+            {
+                title: "Blockchain Pet Identity System",
+                description: "A secure digital identity system for pets that stores medical records, ownership history, and behavioral data. Helps reunite lost pets and ensures proper veterinary care continuity.",
+                category: "PetTech"
+            },
+            {
+                title: "AI-Powered Sleep Optimization",
+                description: "A comprehensive sleep improvement system that monitors bedroom environment, sleep patterns, and lifestyle factors to provide personalized recommendations for better rest and recovery.",
+                category: "HealthTech"
+            },
+            {
+                title: "Virtual Reality Real Estate Tours",
+                description: "Immersive VR platform that allows potential buyers to tour properties worldwide from their living room. Includes interactive features like furniture placement and renovation visualization.",
+                category: "PropTech"
+            },
+            {
+                title: "Smart Water Quality Monitoring",
+                description: "IoT devices that continuously monitor water quality in homes, schools, and public spaces. Sends alerts about contamination and provides filtration recommendations through a mobile app.",
+                category: "WaterTech"
+            },
+            {
+                title: "AI-Generated Custom Skincare",
+                description: "Personalized skincare products created using AI analysis of skin photos, environmental factors, and lifestyle data. Each formula is unique and adapts to changing skin needs over time.",
+                category: "BeautyTech"
+            },
+            {
+                title: "Robotic Elderly Care Assistant",
+                description: "Companion robots designed to help elderly individuals with daily tasks, medication reminders, and social interaction. Equipped with fall detection and emergency response capabilities.",
+                category: "HealthTech"
+            },
+            {
+                title: "Quantum-Encrypted Communication",
+                description: "Ultra-secure messaging platform using quantum encryption for businesses handling sensitive information. Provides mathematically unbreakable security for financial and government communications.",
+                category: "CyberSecurity"
+            },
+            {
+                title: "AR-Enhanced Learning Textbooks",
+                description: "Traditional textbooks enhanced with augmented reality features. Students can visualize complex concepts, interact with 3D models, and access additional content by pointing their phone at pages.",
+                category: "EdTech"
+            },
+            {
+                title: "Sustainable Fashion Marketplace",
+                description: "A platform connecting consumers with sustainable fashion brands, featuring carbon footprint tracking, material transparency, and a clothing recycling program with rewards.",
+                category: "FashionTech"
+            },
+            {
+                title: "AI-Powered Food Waste Reducer",
+                description: "Smart kitchen system that tracks food inventory, suggests recipes based on expiring ingredients, and connects users with local food banks to donate surplus items.",
+                category: "FoodTech"
+            }
+        ];
+        
+        function generateIdea() {
+            const randomIndex = Math.floor(Math.random() * startupIdeas.length);
+            const idea = startupIdeas[randomIndex];
+            
+            // Update counters
+            ideasGenerated++;
+            categoriesExplored.add(idea.category);
+            
+            // Update the idea card with animation
+            const ideaCard = document.getElementById('ideaCard');
+            ideaCard.classList.remove('fade-in');
+            
+            setTimeout(() => {
+                document.getElementById('ideaTitle').textContent = idea.title;
+                document.getElementById('ideaDescription').textContent = idea.description;
+                document.getElementById('ideasGenerated').textContent = ideasGenerated;
+                document.getElementById('categoriesExplored').textContent = categoriesExplored.size;
+                
+                ideaCard.classList.add('fade-in');
+            }, 100);
+        }
+        
+        // Generate first idea on page load
+        window.addEventListener('load', () => {
+            setTimeout(generateIdea, 500);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a58852b202f424',t:'MTc1NDM4ODkxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
 
